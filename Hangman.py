@@ -19,14 +19,14 @@ def hangman():
     p = player(name,0)
     print("Good Luck ! ", name)
 
-    word = random.choice(words)
+    word = random.choice(words).lower()
 
     print("Guess the characters")
 
     guesses = ''
     wrongGuesses = ''
 
-    turns = 2
+    turns = 5
     while turns > 0:
     
         failed = 0
@@ -45,7 +45,7 @@ def hangman():
             print("You Win")
             print("The word is: ", word)
             return p
-        guess = input("guess a character:")
+        guess = input("guess a character:").lower()
         guesses += guess
         
         if guess not in word:		        
@@ -65,7 +65,7 @@ while True:
             df = df.append({'Name' : playerDetails.name, 'Score' : playerDetails.score} , ignore_index=True)
         df = df.sort_values('Score', ascending=False)
         print(df.head(10).to_string(index=False))
-        restart = input('do you want to restart Y/N?')
+        restart = input('do you want to restart Y/N?').upper()
         if restart == 'N':
             break
         elif restart == 'Y':
